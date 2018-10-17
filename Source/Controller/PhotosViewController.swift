@@ -231,6 +231,7 @@ final class PhotosViewController : UICollectionViewController {
     // MARK: Private helper methods
     @objc func updateDoneButton() {
         guard let photosDataSource = photosDataSource else { return }
+        let color = doneBarButton?.tintColor
 
         if photosDataSource.selections.count > 0 {
             doneBarButton = UIBarButtonItem(title: "\(doneBarButtonTitle) (\(photosDataSource.selections.count))", style: .done, target: doneBarButton?.target, action: doneBarButton?.action)
@@ -241,6 +242,8 @@ final class PhotosViewController : UICollectionViewController {
         // Enabled?
         doneBarButton?.isEnabled = photosDataSource.selections.count > 0
 
+        doneBarButton?.tintColor = color
+        
         navigationItem.rightBarButtonItem = doneBarButton
     }
 
