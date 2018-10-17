@@ -67,8 +67,6 @@ final class PhotosViewController : UICollectionViewController {
     
     let settings: BSImagePickerSettings
     
-    fileprivate let doneBarButtonTitle: String = NSLocalizedString("Done", comment: "Done")
-    
     @objc lazy var albumsViewController: AlbumsViewController = {
         let storyboard = UIStoryboard(name: "Albums", bundle: BSImagePickerViewController.bundle)
         let vc = storyboard.instantiateInitialViewController() as! AlbumsViewController
@@ -117,6 +115,7 @@ final class PhotosViewController : UICollectionViewController {
         cancelBarButton?.target = self
         cancelBarButton?.action = #selector(PhotosViewController.cancelButtonPressed(_:))
         albumTitleView?.addTarget(self, action: #selector(PhotosViewController.albumButtonPressed(_:)), for: .touchUpInside)
+        
         navigationItem.leftBarButtonItem = cancelBarButton
         navigationItem.rightBarButtonItem = doneBarButton
         navigationItem.titleView = albumTitleView
@@ -234,9 +233,9 @@ final class PhotosViewController : UICollectionViewController {
         let color = doneBarButton?.tintColor
 
         if photosDataSource.selections.count > 0 {
-            doneBarButton = UIBarButtonItem(title: "\(doneBarButtonTitle) (\(photosDataSource.selections.count))", style: .done, target: doneBarButton?.target, action: doneBarButton?.action)
+            doneBarButton = UIBarButtonItem(title: "\(settings.doneBarButtonTitle) (\(photosDataSource.selections.count))", style: .done, target: doneBarButton?.target, action: doneBarButton?.action)
         } else {
-            doneBarButton = UIBarButtonItem(title: doneBarButtonTitle, style: .done, target: doneBarButton?.target, action: doneBarButton?.action)
+            doneBarButton = UIBarButtonItem(title: settings.doneBarButtonTitle, style: .done, target: doneBarButton?.target, action: doneBarButton?.action)
         }
 
         // Enabled?

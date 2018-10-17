@@ -76,7 +76,6 @@ open class BSImagePickerViewController : UINavigationController {
         let vc = PhotosViewController(fetchResults: self.fetchResults,
                                       defaultSelections: self.defaultSelections,
                                       settings: self.settings)
-        
         vc.doneBarButton = self.doneButton
         vc.cancelBarButton = self.cancelButton
         vc.albumTitleView = self.albumTitleView
@@ -135,8 +134,6 @@ open class BSImagePickerViewController : UINavigationController {
 
 // MARK: ImagePickerSettings proxy
 extension BSImagePickerViewController: BSImagePickerSettings {
-
-
     /**
      See BSImagePicketSettings for documentation
      */
@@ -245,12 +242,27 @@ extension BSImagePickerViewController: BSImagePickerSettings {
         }
     }
     
+    /**
+     See BSImagePicketSettings for documentation
+     */
     @objc public var takePhotoIcon: UIImage? {
         get {
             return settings.takePhotoIcon
         }
         set {
             settings.takePhotoIcon = newValue
+        }
+    }
+    
+    /**
+     See BSImagePicketSettings for documentation
+     */
+    public var doneBarButtonTitle: String {
+        get {
+            return settings.doneBarButtonTitle
+        }
+        set {
+            settings.doneBarButtonTitle = newValue
         }
     }
 }

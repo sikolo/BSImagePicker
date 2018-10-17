@@ -76,4 +76,9 @@ public protocol BSImagePickerSettings {
      If you use a black image tint color will be applied to it.
     */
     var takePhotoIcon: UIImage? { get set }
+    
+    /**
+     Done button title
+     */
+    var doneBarButtonTitle: String { get set }
 }
